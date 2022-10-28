@@ -1,0 +1,30 @@
+
+#product-form{
+    margin: 10%;
+}
+#submit{
+    margin: 5px;
+    
+}
+
+.p-card{
+    margin: 1%;
+    padding: 2%; 
+    border-style:solid;
+    border-color:gray;    
+    border-radius: 10px;
+}
+#myapp{
+    
+    display: flex;
+    flex-wrap:wrap;
+    flex-direction: row;
+}
+
+[v-cloak]{
+    display: none;
+}
+
+.error{
+    color:red;
+}

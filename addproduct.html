@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add product</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vee-validate@next"></script>
+    <script src="https://hardcore-mclean-89ac5f.netlify.app/yup.umd.js"></script>
+</head>
+
+
+<body>
+    
+    <div id="app">
+       
+     <div class="container"> 
+        <h1 class="h1">Add product</h1>
+    
+            <v-form id="product_form" @submit="submit" :validation-schema="schema" >
+            
+            
+            <div class="form-group">
+                <label for="sku">SKU</label>
+                
+                
+                <v-field type="text" class="form-control" name="sku" id="sku" v-model="sku" ></v-field>
+                    <error-message name="sku" class="error"></error-message>
+                    <p class="error" v-if="skuTaken==true">Sku must be unique</p>
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <v-field type="text" class="form-control"  name="name" id="name"  v-model="name"></v-field>
+                <error-message name="name" class="error"></error-message>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <v-field  class="form-control" id="price" name="price"  v-model.number="price" ></v-field>
+                <error-message name="price" class="error"></error-message>
+            </div>
+            
+          
+            
+                <div class="form-group">
+                <label for="type">Type</label>
+                <v-field as="select" v-model="stype" class="form-control" name="type" id="productType" >
+                <option value="size">DVD</option>
+                <option value="weight">Book</option>
+                <option value="dimensions" >Furniture</option>
+                </v-field>
+                
+            </div>
+           
+            <div class="form-group" id="attributes-d1" v-if="stype=='size'" >
+            <p>Please provide size in mb.</p>    
+            <label for="size">Size (MB)</label>
+                <v-field  class="form-control"  id="size" name="size"   v-model.number="size" ></v-field>
+                <error-message name="size" class="error"></error-message>
+                
+            </div>
+            <div class="form-group" id="attributes-b1" v-else-if="stype=='weight'">
+            <p>Please provide weight in kg.</p>    
+            <label for="weight">Weight (kg)</label>
+                <v-field class="form-control" name="weight" id="weight" v-model.number="weight">
+                    
+                </v-field>
+                <error-message name="weight" class="error"></error-message>
+            </div>
+            <div id="furn" v-else="stype=='dimensions'">
+            <div class="form-group" id="attributes-f1">
+            <p>Please provide height in mm.</p>    
+            <label for="height"> Height(mm)</label>
+                <v-field type="number" class="form-control" name="height" id="height" v-model.number="height"></v-field>
+                <error-message name="height" class="error"></error-message>
+            </div>
+            
+            <div class="form-group" id="attributes-f2">
+            <p>Please provide width in mm.</p>    
+            <label for="width">Width(mm)</label>
+                <v-field class="form-control" name="width" id="width" v-model.number="width"></v-field>
+                <error-message name="width" class="error"></error-message>
+            </div>
+            <div class="form-group" id="attributes-f3">
+            <p>Please provide lenght in mm.</p>    
+            <label for="lenght">Lenght (mm)</label>
+                <v-field class="form-control" name="lenght" id="length" v-model.number="lenght"></v-field>
+                <error-message name="lenght" class="error"></error-message>
+            </div>   
+            </div>
+            <div id="buttons">
+            
+            <button id="submit" type="submit" class="btn btn-primary" name="submit">Save</button>
+           
+            <a  href="index.html" class="btn btn-secondary" id="cancel">Cancel</a>
+        </div>    
+        
+    </v-form>
+        
+    
+    </div>
+   
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="add.js"></script>
+  </body>
+  </html>

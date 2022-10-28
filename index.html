@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+     <title>Scandiweb</title>
+</head>
+
+<body>
+    
+   
+    <h1>Product list</h1>
+    
+    
+    
+<div id="myapp">        
+    <div class="col-12 pb-4">
+        <button type="submit" class="btn btn-danger" name="submit" id="submit" @click="deleteRecord">MASS DELETE</button>
+    
+        <a class="btn btn-primary" href="./addproduct.html">ADD</a>
+        </div>
+        <div class="p-card" v-for="product in products" :key="products.id" v-cloak>
+        <div class="card-body">
+            <div>
+                <label class="form-check-label">
+                    <input type="checkbox" class="delete-checkbox" v-model="prod" :value="product.id"   >
+                </label>
+            </div>
+            <div >
+            <h4 class="card-title">{{product.sku}}</h4>
+            <p class="card-text">{{product.name}}</p>
+            <p class="card-text">{{product.price}}$</p>
+            <p class="card-text">{{product.properties}}:{{product.attribute}}</p>
+            </div>
+        </div>
+    </div>  
+       
+</div>
+
+     
+<script src="https://unpkg.com/vue@next"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="list.js"></script>
+</body>
+</html>
